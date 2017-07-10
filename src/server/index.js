@@ -8,20 +8,29 @@ import open from 'open';
 
 
 //webpack configuration
-import webpackConfig from '../../webpack.config.dev';
+import webpackConfig from '../../webpack.config.babel';
 
 //Server Port
 const port = 3001;
 
+//Enviroment
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 //Express app
 const app = express();
+
+//Public
+app.use( express.static( path.join(__dirname, '../public')));
 
 //Webpack compiler
 const webpackCompiler = webpack( webpackConfig );
 
 //Webpack middleware
-app.use(webpackDevMiddleware( webpackCompiler ));
-app.use(webpackHotMiddleware( webpackCompiler ));
+if( isDevelopment){
+    app.use(webpackDevMiddleware( webpackCompiler ));
+    app.use(webpackHotMiddleware( webpackCompiler ));
+}
+
 
 //Sending all trafict to React
 app.get('*', ( req, res ) => {
