@@ -5,6 +5,8 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "html-minifier": "^3.5.2",
     "path": "^0.12.7",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -32,7 +34,7 @@
   },
   "scripts": {
     "start": "babel-node src/server",
-    "production" : "SET NODE_ENV=production SET BABEL_ENV=production npm run build && npm start",
-    "build" :  "SET NODE_ENV=production webpack --config webpack.config.babel.js"
+    "production": "SET NODE_ENV=production SET BABEL_ENV=production npm run build && npm start",
+    "build": "SET NODE_ENV=production webpack --config webpack.config.babel.js"
   }
 }
